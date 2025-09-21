@@ -1,0 +1,89 @@
+/* Minimal custom styling for a crisp landing */
+:root {
+    --gwt-gradient: radial-gradient(
+            1200px 600px at -10% -20%,
+            rgba(99, 102, 241, 0.25),
+            transparent 60%
+        ),
+        radial-gradient(
+            800px 400px at 110% -10%,
+            rgba(16, 185, 129, 0.25),
+            transparent 50%
+        );
+}
+.bg-gradient {
+    background: var(--gwt-gradient), linear-gradient(#fff, #f8fafc);
+}
+.bg-gradient-2 {
+    background: linear-gradient(180deg, #f8fafc, #ffffff);
+}
+
+.gwt-navbar {
+    transition: box-shadow 0.2s ease;
+}
+.gwt-navbar.scrolled {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.hover-lift {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08) !important;
+}
+
+.icon-wrap {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+}
+.icon-wrap svg {
+    width: 20px;
+    height: 20px;
+}
+
+.object-cover {
+    object-fit: cover;
+    height: 200px;
+}
+.step-index {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+}
+
+/* Hero video */
+.demo-video video {
+    border-radius: 0.75rem;
+}
+
+/* Small helpers */
+.py-lg-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+}
+
+/* Dark mode (optional) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #0b0c10;
+        color: #e8eef5;
+    }
+    .card {
+        background: #131519;
+    }
+    .bg-light {
+        background: #0f1115 !important;
+    }
+    .bg-white {
+        background: #0b0c10 !important;
+    }
+    .border,
+    .border-top,
+    .border-bottom {
+        border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+}

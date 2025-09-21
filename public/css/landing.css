@@ -1,0 +1,275 @@
+:root {
+    --gwt-gradient: radial-gradient(
+            1200px 600px at -10% -20%,
+            rgba(99, 102, 241, 0.25),
+            transparent 60%
+        ),
+        radial-gradient(
+            800px 400px at 110% -10%,
+            rgba(16, 185, 129, 0.25),
+            transparent 50%
+        );
+}
+.bg-gradient {
+    background: var(--gwt-gradient), linear-gradient(#fff, #f8fafc);
+}
+.bg-gradient-2 {
+    background: linear-gradient(180deg, #f8fafc, #ffffff);
+}
+.gwt-navbar {
+    transition: box-shadow 0.2s ease;
+}
+.gwt-navbar.scrolled {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+.hover-lift {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08) !important;
+}
+.icon-wrap {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+}
+.icon-wrap svg {
+    width: 20px;
+    height: 20px;
+}
+.object-cover {
+    object-fit: cover;
+    height: 200px;
+}
+.py-lg-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #0b0c10;
+        color: #e8eef5;
+    }
+    .card {
+        background: #131519;
+    }
+    .bg-light {
+        background: #0f1115 !important;
+    }
+    .bg-white {
+        background: #0b0c10 !important;
+    }
+    .border,
+    .border-top,
+    .border-bottom {
+        border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+}
+
+/* Mega menu width & layout */
+.dropdown-mega .mega-menu {
+    width: 100%;
+}
+.dropdown-mega.position-static .dropdown-menu {
+    left: 0;
+    right: 0;
+}
+
+/* Solution tiles */
+.gwt-sol-tile {
+    position: relative;
+    overflow: hidden;
+}
+.gwt-sol-tile .sol-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+/* Background palettes */
+.bg-sol-1 {
+    background: linear-gradient(180deg, #e6f0ff, #ffffff);
+}
+.bg-sol-2 {
+    background: linear-gradient(180deg, #e6fff4, #ffffff);
+}
+.bg-sol-3 {
+    background: linear-gradient(180deg, #fff4e6, #ffffff);
+}
+.bg-sol-4 {
+    background: linear-gradient(180deg, #f3e6ff, #ffffff);
+}
+.bg-sol-5 {
+    background: linear-gradient(180deg, #fff1f1, #ffffff);
+}
+.bg-sol-6 {
+    background: linear-gradient(180deg, #eef7ff, #ffffff);
+}
+
+/* Optional: improve hover feel */
+.gwt-sol-tile:hover {
+    box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08) !important;
+    transform: translateY(-2px);
+    transition: 0.15s;
+}
+
+/* Dark mode niceties */
+@media (prefers-color-scheme: dark) {
+    .gwt-sol-tile .text-dark {
+        color: #e8eef5 !important;
+    }
+    .gwt-sol-tile .text-dark-50 {
+        color: #b7c1d0 !important;
+    }
+}
+
+/* Solutions */
+.solution-hero {
+    background: radial-gradient(
+            1200px 600px at -10% -20%,
+            rgba(99, 102, 241, 0.25),
+            transparent 60%
+        ),
+        radial-gradient(
+            800px 400px at 110% -10%,
+            rgba(16, 185, 129, 0.25),
+            transparent 50%
+        ),
+        linear-gradient(#fff, #f8fafc);
+}
+.hover-lift {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08) !important;
+}
+.icon-wrap {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+}
+.icon-wrap svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Dark mode niceties */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #0b0c10;
+        color: #e8eef5;
+    }
+    .card {
+        background: #131519;
+    }
+    .bg-light {
+        background: #0f1115 !important;
+    }
+    .bg-white {
+        background: #0b0c10 !important;
+    }
+    .border,
+    .border-top,
+    .border-bottom {
+        border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+}
+
+/* Solutions Page => Primary Button: Default, Hover, Focus */
+.solution-hero .btn-primary,
+.solution-pricing .btn-primary,
+.solution-gallery .btn-primary,
+.solution-cta .btn-primary {
+    background-color: var(--product-color) !important;
+    border-color: var(--product-color) !important;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.solution-hero .btn-primary:hover,
+.solution-pricing .btn-primary:hover,
+.solution-gallery .btn-primary:hover,
+.solution-cta .btn-primary:hover {
+    background-color: darken(var(--product-color), 10%) !important;
+    border-color: darken(var(--product-color), 90%) !important;
+    color: var(--product-color) !important;
+}
+
+.solution-hero .btn-primary:focus,
+.solution-pricing .btn-primary:focus,
+.solution-gallery .btn-primary:focus,
+.solution-cta .btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(var(--product-color-rgb), 0.5);
+}
+
+/* Outline Button: Default, Hover, Focus */
+.solution-hero .btn-outline-primary,
+.solution-gallery .btn-outline-primary {
+    color: var(--product-color) !important;
+    border-color: var(--product-color) !important;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.solution-hero .btn-outline-primary:hover,
+.solution-gallery .btn-outline-primary:hover {
+    color: white !important;
+    background-color: var(--product-color) !important;
+    border-color: var(--product-color) !important;
+}
+
+.solution-hero .btn-outline-primary:focus,
+.solution-gallery .btn-outline-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(var(--product-color-rgb), 0.5);
+}
+
+/* Badge */
+.solution-hero .badge {
+    background-color: var(--product-color) !important;
+    color: #fff !important;
+}
+
+.solution-pricing .text-primary {
+    color: var(--product-color) !important;
+}
+
+/* Add transitions for hover effects */
+.solution-hero .badge:hover,
+.solution-pricing .text-primary:hover {
+    background-color: darken(var(--product-color), 15%) !important;
+}
+
+/* All Solutions Page */
+/* Styling for the solution cards */
+.solution-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Hover effect for the solution cards */
+.solution-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Button styling */
+.solution-card .btn-outline-primary {
+    border: 2px solid #007bff;
+    color: #007bff;
+}
+
+.solution-card .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Styling for the platform filter */
+#platformFilter {
+    max-width: 300px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+}
