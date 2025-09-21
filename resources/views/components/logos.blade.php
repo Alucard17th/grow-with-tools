@@ -6,7 +6,7 @@
             <div class="col"><img src="{{ asset('img/techs/bootstrap.svg') }}" alt="Bootstrap" height="42"></div>
             <div class="col"><img src="{{ asset('img/techs/react.svg') }}" alt="TikTok" height="42"></div>
             <div class="col"><img src="{{ asset('img/techs/mysql.svg') }}" alt="MySQL" height="42"></div>
-            <div class="col"><img src="{{ asset('img/techs/material ui.svg') }}" alt="Material UI" height="42"></div>
+            <div class="col"><img src="{{ asset('img/techs/material-ui.svg') }}" alt="Material UI" height="42"></div>
         </div>
     </div>
 </section>
