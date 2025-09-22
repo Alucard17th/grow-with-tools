@@ -2,34 +2,38 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\PublishTikTokJob;
+use App\Jobs\PublishInstagramJob;
 use App\Models\ScheduledPost;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 
-class PublishDueTikToks extends Command
+class PublishDueInstagrams extends Command
 {
-    protected $signature = 'tiktok:publish-due {--dry-run}';
-    protected $description = 'Dispatch publish jobs for posts whose publish_at is due (status queued/draft)';
+    // Add an optional --dry-run like your TikTok command,
+    // plus an optional --platform to override the default.
+    protected $signature = 'instagram:publish-due {--dry-run} {--platform=instagram}';
+    protected $description = 'Dispatch publish jobs for Instagram posts whose publish_at is due (status queued/draft)';
 
     public function handle(): int
     {
-        // Prevent overlap if a previous minute is still running
-        $lock = Cache::lock('tiktok:publish-due', 55); // seconds
-        if (! $lock->get()) {
+        // Prevent overlapping runs (1-minute window)
+        $lock = Cache::lock('instagram:publish-due', 55);
+        if (!$lock->get()) {
             $this->warn('Another run is in progress. Skipping.');
             return self::SUCCESS;
         }
 
         try {
-            $now = now();
+            $now      = now();
+            // $platform = $this->option('platform');
+            $platform = 'instagram';
+
             $query = ScheduledPost::query()
                 ->whereIn('status', ['queued', 'draft'])
                 ->where('publish_at', '<=', $now);
 
-            $platform = 'tiktok';
-
+            // If your table has a 'platform' or 'network' column, filter for Instagram.
             if (Schema::hasColumn('scheduled_posts', 'platform')) {
                 $query->where('platform', $platform);
             } elseif (Schema::hasColumn('scheduled_posts', 'network')) {
@@ -37,17 +41,21 @@ class PublishDueTikToks extends Command
             } elseif (Schema::hasColumn('scheduled_posts', 'provider')) {
                 $query->where('provider', $platform);
             }
+            // Otherwise, remove these 3 lines and filter however you tag IG posts.
 
             $total = (clone $query)->count();
-            $this->info("Found {$total} due TikTok posts at {$now->toIso8601String()}");
+            $this->info("Found {$total} due IG posts at {$now->toIso8601String()}");
 
             $query->orderBy('id')->chunkById(200, function ($posts) {
                 foreach ($posts as $post) {
-                    $this->line("→ Dispatching #{$post->id} ({$post->product}) {$post->publish_at}");
+                    $label = trim(($post->product ?? '') . ' ' . ($post->caption ? '(' . mb_strimwidth($post->caption, 0, 40, '…') . ')' : ''));
+                    $this->line("→ Dispatching #{$post->id} {$label} {$post->publish_at}");
+
                     if ($this->option('dry-run')) {
                         continue;
                     }
-                    PublishTikTokJob::dispatch($post);
+
+                    PublishInstagramJob::dispatch($post);
                 }
             });
 

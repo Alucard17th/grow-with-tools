@@ -38,33 +38,33 @@ class PublishInstagramJob implements ShouldQueue
             return;
         }
 
-        $token = InstagramToken::where('user_id', $post->user_id)->firstOrFail();
-        $token = $api->ensureFreshToken($token);
-
-        // Build container payload
-        $isReel = (bool) ($post->is_reel ?? true); // default to Reels
-        $mediaType = $isReel ? 'REELS' : 'VIDEO';
-
-        $payload = [
-            'media_type' => $mediaType,
-            'video_url'  => $post->video_url,            // must be publicly accessible
-            'caption'    => mb_substr((string)$post->caption, 0, 2200),
-        ];
-
-        // Optional: pick a cover frame (in seconds)
-        if (!is_null($post->cover_ts_ms)) {
-            $payload['thumb_offset'] = (int) floor(((int)$post->cover_ts_ms) / 1000);
-        }
-
-        \Log::info('IG INIT payload', [
-            'id'        => $post->id,
-            'mediaType' => $mediaType,
-            'video_url' => $post->video_url,
-        ]);
-
-        $post->update(['status'=>'init']);
-
         try {
+            $token = InstagramToken::where('user_id', $post->user_id)->firstOrFail();
+            $token = $api->ensureFreshToken($token);
+
+            // Build container payload
+            $isReel = (bool) ($post->is_reel ?? true); // default to Reels
+            $mediaType = $isReel ? 'REELS' : 'VIDEO';
+
+            $payload = [
+                'media_type' => $mediaType,
+                'video_url'  => $post->video_url,            // must be publicly accessible
+                'caption'    => mb_substr((string)$post->caption, 0, 2200),
+            ];
+
+            // Optional: pick a cover frame (in seconds)
+            if (!is_null($post->cover_ts_ms)) {
+                $payload['thumb_offset'] = (int) floor(((int)$post->cover_ts_ms) / 1000);
+            }
+
+            \Log::info('IG INIT payload', [
+                'id'        => $post->id,
+                'mediaType' => $mediaType,
+                'video_url' => $post->video_url,
+            ]);
+
+            $post->update(['status'=>'init']);
+
             // Step 1: create media container
             $container = $api->createMediaContainer($token->ig_user_id, $token->access_token, $payload);
             \Log::info('IG INIT response', ['id'=>$post->id, 'resp' => $container]);
@@ -76,10 +76,10 @@ class PublishInstagramJob implements ShouldQueue
             }
 
             // Step 2: publish
-            $publish = $api->publishMedia($token->ig_user_id, $token->access_token, $creationId);
-            \Log::info('IG PUBLISH response', ['id'=>$post->id, 'resp' => $publish]);
+            // $publish = $api->publishMedia($token->ig_user_id, $token->access_token, $creationId);
+            // \Log::info('IG PUBLISH response', ['id'=>$post->id, 'resp' => $publish]);
 
-            // Update and schedule a status poller
+            // Don't publish yet for video! Wait until status_code == FINISHED
             $post->update(['status'=>'publishing', 'publish_id'=>$creationId]);
 
             // Poll in ~25s (IG can take time to finish transcoding)
