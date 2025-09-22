@@ -34,6 +34,8 @@ class PostController extends Controller
             'title'   => 'nullable|string|max:120',
             'caption' => 'nullable|string|max:2200',
 
+            'platform' => 'required|in:tiktok,instagram',
+
             'video_source' => 'required|in:PULL_FROM_URL,FILE_UPLOAD',
             // 'video_url'    => 'required_if:video_source,PULL_FROM_URL|url',
             'file'         => 'required_if:video_source,FILE_UPLOAD|file|mimetypes:video/mp4,video/quicktime|max:512000', // up to 500MB

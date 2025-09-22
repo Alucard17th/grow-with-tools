@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container py-5">
-    <h1 class="h3 mb-4">Schedule new TikTok post</h1>
+    <h1 class="h3 mb-4">Schedule new post</h1>
 
     {{-- Top summary (optional but useful) --}}
     @if ($errors->any())
@@ -18,6 +18,15 @@
 
     <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" class="row g-3">
         @csrf
+
+        <div class="col-md-12">
+            <label class="form-label">Platform</label>
+            <select name="platform" class="form-select @error('platform') is-invalid @enderror" required>
+                <option value="tiktok" {{ old('platform','tiktok')==='tiktok' ? 'selected' : '' }}>TikTok</option>
+                <option value="instagram" {{ old('platform','instagram')==='instagram' ? 'selected' : '' }}>Instagram</option>
+            </select>
+            @error('platform') <div class="invalid-feedback">{{ $message }}</div> @enderror
+        </div>
 
         <div class="col-md-4">
             <label class="form-label">Product</label>
