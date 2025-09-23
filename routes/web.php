@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TikTokAuthController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\LeadController;
 use App\Http\Controllers\SolutionController;
@@ -19,9 +20,11 @@ Route::get('/solutions', [SolutionController::class, 'index'])->name('solutions.
 
 Route::post('/leads/js/store', [LeadController::class, 'jsStore'])->name('leads.js.store');
 
+Route::get('/tiktok/callback', [TikTokAuthController::class,'callback'])->name('tiktok.callback');
+
 Auth::routes();
 Route::middleware(['auth',/*'verified','can:isAdmin'*/])->group(function () {
-    Route::get('/dashboard', function () { return view('dashboard.dashboard'); })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 
     Route::get('/dashboard/posts', [PostController::class,'index'])->name('posts.index');
     Route::get('/dashboard/posts/create', [PostController::class,'create'])->name('posts.create');
@@ -39,35 +42,5 @@ Route::middleware(['auth',/*'verified','can:isAdmin'*/])->group(function () {
         
 });
 
-Route::get('/tiktok/callback', [TikTokAuthController::class,'callback'])->name('tiktok.callback');
-
-// Route::get('/auth/facebook/redirect', function () {
-//     // Create and persist a CSRF-ish state for validation
-//     $state = Str::random(40);
-//     session(['fb_oauth_state' => $state]);
-
-//     $params = http_build_query([
-//         'client_id'     => env('FB_APP_ID'),
-//         'redirect_uri'  => env('FB_REDIRECT_URI'),
-//         'scope'         => 'instagram_basic,instagram_content_publish,pages_show_list,pages_read_engagement',
-//         'response_type' => 'code',
-//         'state'         => $state,
-//     ]);
-
-//     return redirect("https://www.facebook.com/dialog/oauth?{$params}");
-// });
-
-// Route::get('/auth/facebook/callback', function (Request $request) {
-//     // Validate state
-//     abort_unless($request->filled('state') && $request->state === session('fb_oauth_state'), 419);
-
-//     // Handle ?code=... (exchange to tokens)
-//     $code = $request->query('code');
-//     abort_if(empty($code), 400, 'Missing code');
-
-//     // Here you’d call your InstagramClient->exchangeCode($code, auth()->id() ?? $userId)
-//     // return redirect('/done');
-//     return 'OK — got code: ' . e(substr($code, 0, 8)) . '...'; // placeholder
-// });
 
 require __DIR__.'/auth.php';

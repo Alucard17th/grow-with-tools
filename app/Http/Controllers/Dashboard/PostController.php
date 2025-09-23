@@ -8,6 +8,7 @@ use App\Models\TikTokToken;
 use App\Jobs\PublishTikTokJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ScheduledPostRequest;
 
 class PostController extends Controller
 {   
@@ -76,7 +77,7 @@ class PostController extends Controller
 
         $post = \App\Models\ScheduledPost::create($data);
 
-        return redirect()->route('dashboard')->with('ok', 'Post scheduled.');
+        return redirect()->route('posts.index')->with('ok', 'Post scheduled.');
     }
 
     public function publishNow(ScheduledPost $post)
@@ -137,13 +138,13 @@ class PostController extends Controller
         // Save
         $post->update($data);
 
-        return redirect()->route('dashboard')->with('ok', 'Post updated.');
+        return redirect()->route('posts.index')->with('ok', 'Post updated.');
     }
 
     public function destroy(ScheduledPost $post)
     {
         abort_unless($post->user_id === Auth::id(), 403);
         $post->delete();
-        return redirect()->route('dashboard')->with('ok', 'Post deleted.');
+        return redirect()->route('posts.index')->with('ok', 'Post deleted.');
     }
 }

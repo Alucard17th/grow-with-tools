@@ -1,6 +1,5 @@
 <?php
 
-// app/Http/Requests/ScheduledPostRequest.php
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -15,6 +14,8 @@ class ScheduledPostRequest extends FormRequest
             'product' => 'required|string|max:64',
             'title'   => 'nullable|string|max:120',
             'caption' => 'nullable|string|max:2200',
+
+            'platform' => 'required|in:tiktok,instagram',
 
             'video_source' => 'required|in:PULL_FROM_URL,FILE_UPLOAD',
             'video_url'    => 'required_if:video_source,PULL_FROM_URL|url',
