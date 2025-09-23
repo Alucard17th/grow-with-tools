@@ -135,6 +135,8 @@ class PostController extends Controller
             $data[$flag] = (bool) ($data[$flag] ?? false);
         }
 
+        $data['video_source'] = 'PULL_FROM_URL'; // normalize
+
         // Save
         $post->update($data);
 
