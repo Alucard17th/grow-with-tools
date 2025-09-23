@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ScheduledPost;
 use App\Models\TikTokToken;
 use App\Jobs\PublishTikTokJob;
+use App\Jobs\PublishInstagramJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ScheduledPostRequest;
@@ -84,6 +85,10 @@ class PostController extends Controller
     {
         logger()->info('Publishing now', ['post' => $post]);
         abort_unless($post->user_id === Auth::id(), 403);
+        if($post->platform == 'instagram') {
+            PublishInstagramJob::dispatch($post);
+            return back()->with('ok','Publishing started.');
+        }
         PublishTikTokJob::dispatch($post);
         return back()->with('ok','Publishing started.');
     }

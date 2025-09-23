@@ -2,59 +2,25 @@
 
 @section('content')
 <div class="container py-5">
-    @if(session('ok')) 
+    @if(session('ok'))
     <div class="alert alert-success alert-dismissible fade show">
         {{ session('ok') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div> 
+    </div>
     @endif
 
-    @if(session('error')) 
+    @if(session('error'))
     <div class="alert alert-danger alert-dismissible fade show">
         {{ session('error') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div> 
-    @endif
-
-    @php
-    $igToken = \App\Models\InstagramToken::where('user_id', auth()->id())->first();
-    $tiktokToken = \App\Models\TikTokToken::where('user_id', auth()->id())->first();
-    @endphp
-
-    @if($tiktokToken && $tiktokToken->expires_at && $tiktokToken->expires_at->isFuture())
-    <div class="alert alert-success">
-        TikTok connected (TikTok User ID: {{ $tiktokToken->tiktok_user_id }}) —
-        Expires {{ $tiktokToken->expires_at->diffForHumans() }}
-    </div>
-    @else
-    <div class="alert alert-warning d-flex align-items-center justify-content-between">
-        TikTok not connected or token expired
-        <a class="btn btn-outline-secondary" href="{{ route('tiktok.connect') }}">
-            Connect TikTok
-        </a>
-    </div>
-    @endif
-
-    @if($igToken && $igToken->expires_at && $igToken->expires_at->isFuture())
-    <div class="alert alert-success">
-        Instagram connected (IG User ID: {{ $igToken->ig_user_id }}) — Expires
-        {{ optional($igToken->expires_at)->diffForHumans() }}
-    </div>
-    @else
-    <div class="alert alert-warning d-flex align-items-center justify-content-between">
-        Instagram not connected or token expired
-        <a class="btn btn-outline-secondary" href="{{ route('instagram.redirect') }}">
-            Connect Instagram
-        </a>
     </div>
     @endif
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0">Dashboard</h1>
         <div class="d-flex gap-2">
-
-
-            <a class="btn btn-primary" href="{{ route('posts.create') }}">Schedule TikTok Post</a>
+            <a class="btn btn-primary" href="{{ route('posts.create') }}">Schedule Post</a>
+            <x-sync-platform-status />
         </div>
     </div>
 

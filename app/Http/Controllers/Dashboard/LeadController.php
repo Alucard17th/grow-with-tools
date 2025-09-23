@@ -10,8 +10,8 @@ class LeadController extends Controller
 {
     // Display the list of leads
     public function index()
-    {
-        $leads = Lead::all(); // Fetch all leads
+    {   
+        $leads = Lead::latest()->paginate(5);
         return view('dashboard.leads.index', compact('leads'));
     }
 

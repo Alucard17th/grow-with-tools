@@ -1,7 +1,7 @@
-@props(['name', 'fillColor' => 'currentColor'])
+@props(['name', 'fillColor' => 'currentColor', 'width' => 16, 'height' => 16])
 @switch($name)
 @case('wordpress')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-wordpress"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-wordpress"
     viewBox="0 0 16 16">
     <path
         d="M12.633 7.653c0-.848-.305-1.435-.566-1.892l-.08-.13c-.317-.51-.594-.958-.594-1.48 0-.63.478-1.218 1.152-1.218q.03 0 .058.003l.031.003A6.84 6.84 0 0 0 8 1.137 6.86 6.86 0 0 0 2.266 4.23c.16.005.313.009.442.009.717 0 1.828-.087 1.828-.087.37-.022.414.521.044.565 0 0-.371.044-.785.065l2.5 7.434 1.5-4.506-1.07-2.929c-.369-.022-.719-.065-.719-.065-.37-.022-.326-.588.043-.566 0 0 1.134.087 1.808.087.718 0 1.83-.087 1.83-.087.37-.022.413.522.043.566 0 0-.372.043-.785.065l2.48 7.377.684-2.287.054-.173c.27-.86.469-1.495.469-2.046zM1.137 8a6.86 6.86 0 0 0 3.868 6.176L1.73 5.206A6.8 6.8 0 0 0 1.137 8" />
@@ -12,7 +12,7 @@
 </svg>
 @break
 @case('speedometer')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-speedometer"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-speedometer"
     viewBox="0 0 16 16">
     <path
         d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2M3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.39.39 0 0 0-.029-.518z" />
@@ -21,14 +21,14 @@
 </svg>
 @break
 @case('plug')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-menu-button-fill"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-menu-button-fill"
     viewBox="0 0 16 16">
     <path
         d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h8A1.5 1.5 0 0 0 11 3.5v-2A1.5 1.5 0 0 0 9.5 0zm5.927 2.427A.25.25 0 0 1 7.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5" />
 </svg>
 @break
 @case('calendar')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-calendar-week"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-calendar-week"
     viewBox="0 0 16 16">
     <path
         d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z" />
@@ -37,7 +37,7 @@
 </svg>
 @break
 @case('gear')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-gear"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-gear"
     viewBox="0 0 16 16">
     <path
         d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
@@ -46,14 +46,14 @@
 </svg>
 @break
 @case('chart-line')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-bar-chart-line"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-bar-chart-line"
     viewBox="0 0 16 16">
     <path
         d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1zm1 12h2V2h-2zm-3 0V7H7v7zm-5 0v-3H2v3z" />
 </svg>
 @break
 @case('robot')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-robot"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-robot"
     viewBox="0 0 16 16">
     <path
         d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135" />
@@ -62,33 +62,47 @@
 </svg>
 @break
 @case('lock')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-lock"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-lock"
     viewBox="0 0 16 16">
     <path fill-rule="evenodd"
         d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3" />
 </svg>
 @break
 @case('palette')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-palette2"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-palette2"
     viewBox="0 0 16 16">
     <path
         d="M0 .5A.5.5 0 0 1 .5 0h5a.5.5 0 0 1 .5.5v5.277l4.147-4.131a.5.5 0 0 1 .707 0l3.535 3.536a.5.5 0 0 1 0 .708L10.261 10H15.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5H3a3 3 0 0 1-2.121-.879A3 3 0 0 1 0 13.044m6-.21 7.328-7.3-2.829-2.828L6 7.188zM4.5 13a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0M15 15v-4H9.258l-4.015 4zM0 .5v12.495zm0 12.495V13z" />
 </svg>
 @break
 @case('search')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-search"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-search"
     viewBox="0 0 16 16">
     <path
         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
 </svg>
 @break
 @case('tools')
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $fillColor }}" class="bi bi-window-sidebar"
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-window-sidebar"
     viewBox="0 0 16 16">
     <path
         d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
     <path
         d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v2H1V3a1 1 0 0 1 1-1zM1 13V6h4v8H2a1 1 0 0 1-1-1m5 1V6h9v7a1 1 0 0 1-1 1z" />
+</svg>
+@break
+@case('instagram')
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-instagram"
+    viewBox="0 0 16 16">
+    <path
+        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+</svg>
+@break
+@case('tiktok')
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" fill="{{ $fillColor }}" class="bi bi-tiktok"
+    viewBox="0 0 16 16">
+    <path
+        d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z" />
 </svg>
 @break
 @default
