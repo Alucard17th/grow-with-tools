@@ -29,16 +29,19 @@ class FetchTikTokStatusJob implements ShouldQueue
 
         $state = $status['data']['status'] ?? null; // SUCCEEDED / FAILED / PROCESSING
 
-        if ($state === 'SUCCEEDED') {
+        if ($state === 'PUBLISH_COMPLETE') {
             $url = $status['data']['video_url'] ?? null;
             $post->update(['status'=>'published','tiktok_post_url'=>$url]);
             return;
-        }
-
-        if ($state === 'FAILED') {
+        }else{
             $post->update(['status'=>'failed','error'=>json_encode($status)]);
             return;
         }
+
+        // if ($state === 'FAILED') {
+        //     $post->update(['status'=>'failed','error'=>json_encode($status)]);
+        //     return;
+        // }
 
         // still processing → re-check
         self::dispatch($post)->delay(now()->addSeconds(30));
