@@ -30,6 +30,7 @@ class TikTokAuthController extends Controller
             'state'                 => $state,
             'code_challenge'        => $challenge,
             'code_challenge_method' => 'S256',
+            'disable_auto_auth'    => 1,
         ]);
 
         logger()->info('TTK redirect', [
