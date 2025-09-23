@@ -70,8 +70,8 @@
             <select id="video_source" name="video_source"
                 class="form-select @error('video_source') is-invalid @enderror" {{ $dis }}>
                 @php $vs = old('video_source', $post->file_path ? 'FILE_UPLOAD' : $post->video_source); @endphp
-                <option value="PULL_FROM_URL" {{ $vs==='PULL_FROM_URL' ? 'selected' : '' }}>PULL_FROM_URL</option>
-                <option value="FILE_UPLOAD" {{ $vs==='FILE_UPLOAD'   ? 'selected' : '' }}>FILE_UPLOAD</option>
+                <option value="PULL_FROM_URL" {{ $post->video_source==='PULL_FROM_URL' ? 'selected' : '' }}>PULL_FROM_URL</option>
+                <option value="FILE_UPLOAD" {{ $post->video_source==='FILE_UPLOAD'   ? 'selected' : '' }}>FILE_UPLOAD</option>
             </select>
             @error('video_source')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
