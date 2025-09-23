@@ -31,7 +31,6 @@ class InstagramAuthController extends Controller
                 ->route('posts.index') // <- your settings page route
                 ->with('status', 'Instagram connected as IG user '.$token->ig_user_id);
         } catch (\Throwable $e) {
-            dd($e);
             report($e);
             return redirect()
                 ->route('posts.index')
