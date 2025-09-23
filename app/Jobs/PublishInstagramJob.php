@@ -9,18 +9,17 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
+// use Illuminate\Queue\SerializesModels;
 
 class PublishInstagramJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, Queueable;
 
-    public function __construct(public ScheduledPost $post) {}
+    public function __construct(public int $postId) {}
 
     public function handle(InstagramClient $api): void
     {
-        $post = $this->post->fresh();
-
+        $post = ScheduledPost::find($this->postId); // Reload model
         \Log::info('IG JOB start', [
             'id'          => $post?->id,
             'status'      => $post?->status,

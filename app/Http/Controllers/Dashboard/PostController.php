@@ -86,7 +86,7 @@ class PostController extends Controller
         logger()->info('Publishing now', ['post' => $post]);
         abort_unless($post->user_id === Auth::id(), 403);
         if($post->platform == 'instagram') {
-            PublishInstagramJob::dispatch($post);
+            PublishInstagramJob::dispatch($post->id);
             return back()->with('ok','Publishing started.');
         }
         PublishTikTokJob::dispatch($post);

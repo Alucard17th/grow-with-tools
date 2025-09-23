@@ -49,6 +49,9 @@
                             <x-svg name="instagram" width="48" height="48" class="mb-3"/>
                             @if($igValid)
                                 Instagram connected
+                                <a class="btn btn-outline-secondary mt-2" href="{{ route('instagram.redirect') }}">
+                                    Connect Instagram
+                                </a>
                                 <ul>
                                   <li><strong>User ID:</strong> {{ $igToken->ig_user_id }}</li>
                                   <li><strong>Expires At:</strong> {{ optional($igToken->expires_at)->diffForHumans() }}</li>
