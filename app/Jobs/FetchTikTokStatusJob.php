@@ -25,6 +25,8 @@ class FetchTikTokStatusJob implements ShouldQueue
         $token = TikTokToken::where('user_id', $post->user_id)->firstOrFail();
         $status = $api->fetchPublishStatus($post->publish_id, $token);
 
+        \Log::info('FetchTikTokStatusJob handle() TikTok status', $status);
+
         $state = $status['data']['status'] ?? null; // SUCCEEDED / FAILED / PROCESSING
 
         if ($state === 'SUCCEEDED') {
